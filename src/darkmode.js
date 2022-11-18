@@ -1,6 +1,6 @@
 import styles from "./darkmode.module.css";
 // import { ChangeEventHandler } from "react";
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 
 const DarkMode = () => {
     const [themedector,setThemeDector] = useState(false);
@@ -10,6 +10,8 @@ const setDark = () => {
   localStorage.setItem("theme", "dark");
    // ye css ko dark mode allow karega
   document.documentElement.setAttribute("data-theme", "dark");
+
+  
 };
 
 // if this func run then local storege me me theme{key} = light{value} set ho jayega
@@ -17,6 +19,8 @@ const setLight = () => {
   localStorage.setItem("theme", "light");
   // ye css ko light mode allow karega
   document.documentElement.setAttribute("data-theme", "light");
+  
+  
 };
 
 // iss func se ham pata karege ki user ke local store me konsa theme hai.
@@ -33,6 +37,7 @@ const defaultDark =
 
 if (defaultDark) {
   setDark();
+ 
 }
 
 // ye toggle button par ye func work karega.
@@ -45,9 +50,20 @@ const toggleTheme = (e) => {
     // otherwise white theme chalega.
     setLight();
     setThemeDector(false);
+    
   }
 };
 /* NEW (END) */
+
+useEffect(()=>{
+
+  const storedTheme1 = localStorage.getItem("theme");
+  if(storedTheme1 == "dark"){
+    setThemeDector(true);
+  }else{
+    setThemeDector(false);
+  }
+},[themedector])
 
 
   return (
