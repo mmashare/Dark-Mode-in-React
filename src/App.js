@@ -1,7 +1,12 @@
-import "./App.css";
-
-function App() {
-  return <div className="App">welcome to a simple react app</div>;
+import React from 'react'
+import styles from "./App.css"
+import DarkMode from './darkmode'
+const App = () => {
+  return (
+    <div className={styles.themedark}>
+     <DarkMode/> 
+      </div>
+  )
 }
 
-export default App;
+export default App
